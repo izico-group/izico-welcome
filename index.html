@@ -3,73 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>گروه رسانه‌ای آیزیکو</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/iran-sans-webfont@3.0.0/dist/font-face.css" rel="stylesheet" />
+  <title>گروه آیزیکو</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
   <style>
     :root {
-      --bg-light: #f3f4f6;
-      --bg-dark: #1a1a1a;
-      --card-light: #ffffff;
-      --card-dark: #2a2a2a;
+      --bg-light: #ddebfa;
+      --bg-dark: #0a1c31;
+      --card-light: rgba(255, 255, 255, 0.6);
+      --card-dark: rgba(20, 20, 20, 0.4);
       --text-light: #222;
       --text-dark: #eee;
-      --accent: #E0BB63;
-      --accent-hover: #c9a24f;
+      --accent: #c99a19;
+      --accent-hover: #b68b1f;
     }
+
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
-      font-family: "IRANSansWeb", sans-serif;
-      background-color: var(--bg-light);
+      font-family: "Vazir", sans-serif;
+      background: var(--bg-light);
       color: var(--text-light);
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-    .wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      transition: background 0.5s ease, color 0.5s ease;
       min-height: 100vh;
     }
-    .card {
-      background-color: var(--card-light);
-      color: var(--text-light);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      text-align: center;
-    }
-    body.dark .card {
-      background-color: var(--card-dark);
+
+    body.dark {
+      background: var(--bg-dark);
       color: var(--text-dark);
     }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background-color: var(--card-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(20px);
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    body.dark .card {
+      background-color: var(--card-dark);
+    }
+
     .logo {
-      width: 100px;
+      width: 120px;
       margin: 0 auto 1rem;
       display: block;
+      animation: zoomIn 1s ease-out;
     }
-    h1 {
-      font-size: 1.3rem;
-      margin-bottom: 1.2rem;
-      color: var(--accent);
-    }
+
     .menu {
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
       margin-bottom: 1rem;
     }
+
     .button {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.6rem;
       background-color: transparent;
       border: 2px solid var(--accent);
@@ -78,21 +83,26 @@
       padding: 0.6rem 1rem;
       border-radius: 1rem;
       font-weight: 600;
-      font-size: 0.9rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
     }
+
     .button:hover {
       background-color: var(--accent);
       color: #000;
+      transform: scale(1.05);
     }
+
     .button img {
       width: 20px;
       height: 20px;
       transition: filter 0.3s ease;
     }
+
     body.dark .button img {
       filter: invert(1) brightness(1.2);
     }
+
     .theme-toggle {
       margin-top: 1rem;
       background: none;
@@ -102,22 +112,65 @@
       border-radius: 1rem;
       font-weight: bold;
       cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
     }
+
     .theme-toggle:hover {
       background-color: var(--accent);
       color: #000;
+      transform: scale(1.05);
     }
+
     .contact {
       margin-top: 1rem;
       font-size: 0.85rem;
     }
+
     .footer {
       font-size: 0.75rem;
       color: #888;
       margin-top: 1rem;
     }
+
     body.dark .footer {
       color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        border-radius: 0;
+        padding: 1rem;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body:not(.light) {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+
+      body:not(.light) .card {
+        background-color: var(--card-dark);
+      }
+
+      body:not(.light) .footer {
+        color: #ccc;
+      }
+
+      body:not(.light) .button img {
+        filter: invert(1) brightness(1.2);
+      }
     }
   </style>
 </head>
@@ -125,10 +178,10 @@
   <div class="wrapper">
     <div class="card">
       <img src="logo.png" alt="لوگوی آیزیکو" class="logo" />
-      <h1>به خانواده آیزیکو خوش آمدید</h1>
 
       <div class="menu">
-        <a class="button" href="https://www.instagram.com/izico_co?igsh=MWUyMmdkZmdyamsxNg==" target="_blank">
+        <!-- شبکه‌های اجتماعی و تماس‌ها -->
+        <a class="button" href="https://www.instagram.com/izico_co" target="_blank">
           <img src="instagram.svg" alt="Instagram" />
           اینستاگرام
         </a>
@@ -169,14 +222,30 @@
       </div>
 
       <div class="footer">
-        © 2025 گروه رسانه‌ای آیزیکو. تمامی حقوق محفوظ است.
+        © 2025 گروه آیزیکو. تمامی حقوق محفوظ است.
       </div>
     </div>
   </div>
 
   <script>
+    // بررسی تم ذخیره‌شده و اعمال آن
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+    } else if (savedTheme === 'light') {
+      document.body.classList.add('light');
+    }
+
     function toggleTheme() {
-      document.body.classList.toggle('dark');
+      if (document.body.classList.contains('dark')) {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light');
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
     }
   </script>
 </body>
